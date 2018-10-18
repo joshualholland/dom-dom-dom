@@ -22,15 +22,20 @@ btn.addEventListener('click', function () {
         let color = ['red', 'blue', 'orange', 'yellow', 'cyan', 'magenta', 'purple', 'pink', 'green']
         square.style.backgroundColor = color[Math.floor(Math.random() * color.length)];
     })
-    square.addEventListener('dblclick', function() {
-        if (square.getAttribute('id') % 2 == 0) {
-            square.remove(square.id++);
-            if (square.id++ == null) {
+    square.addEventListener('dblclick', function () {
+        let counter = square.getAttribute('id');
+        if (counter % 2 == 0) {
+            if (this.nextSibling == null) {
                 alert("Can't do that, bud");
+                return;
             }
-        // } else {
-        //     square.remove(square.getAttribute('id')--);
-
+            document.body.removeChild(this.nextSibling);
+        } else {
+            if (this.previousSibling == null) {
+                alert("Can't do that, bud");
+                return;
+            }
+            document.body.removeChild(this.previousSibling);
         }
     })
 });
