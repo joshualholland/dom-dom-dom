@@ -3,12 +3,14 @@ let btn = document.createElement("button");
 let btnText = document.createTextNode("Add Square");
 btn.append(btnText);
 document.body.appendChild(btn);
-
+let div = document.createElement('div');
+div.setAttribute('id', 'container');
+document.body.appendChild(div);
 let counter = 0;
 btn.addEventListener('click', function () {
     let square = document.createElement('div');
     square.classList.add('square');
-    document.body.appendChild(square);
+    div.appendChild(square);
     square.setAttribute('id', counter);
     counter++
     square.addEventListener("mouseover", function () {
@@ -29,13 +31,13 @@ btn.addEventListener('click', function () {
                 alert("Can't do that, bud");
                 return;
             }
-            document.body.removeChild(this.nextSibling);
+            div.removeChild(this.nextSibling);
         } else {
             if (this.previousSibling == null) {
                 alert("Can't do that, bud");
                 return;
             }
-            document.body.removeChild(this.previousSibling);
+            div.removeChild(this.previousSibling);
         }
     })
 });
